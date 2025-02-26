@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/background">
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_text"
+        android:textSize="18sp"
+        android:textColor="#212121"
+        android:padding="16dp"
+        android:lineSpacingExtra="8dp"
+        android:textAlignment="center"
+        android:background="@drawable/welcome_background"
+        android:layout_marginBottom="24dp"/>
+
+    <EditText
+        android:id="@+id/passwordInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/button_color"
+        android:hint="Введите пароль"
+        android:inputType="textPassword"
+        android:textColor="#000000"
+        android:textColorHighlight="#000000"
+        android:textColorHint="#000000" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Войти"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/button_color"
+        android:textColor="@color/button_text"/>
+
+    <TextView
+        android:id="@+id/selectZoneText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Выберите зону отдыха для управления:"
+        android:textSize="18sp"
+        android:textColor="#212121"
+        android:padding="16dp"
+        android:visibility="gone"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"/>
+
+    <Spinner
+        android:id="@+id/ledSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="#000000"
+        android:backgroundTint="@color/button_color"
+        android:entries="@array/led_options"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/selectLedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Выбрать"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        android:backgroundTint="@color/button_color"
+        android:textColor="@color/button_text"/>
+
+</LinearLayout>
