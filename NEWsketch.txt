@@ -1,0 +1,54 @@
+#include <HardwareSerial.h>
+
+// Пины для управления соленоидами
+#define SOLENOID_1_PIN 13   // Предполагаемый пин для транзистора (уточните!)
+#define SOLENOID_2_PIN 12   // Пин для ULN2003A (D12)
+
+// Пин для кнопок
+#define BUTTON_PIN 34       // GPIO34 (D34)
+
+// Настройка UART для кард-ридера
+HardwareSerial CardReader(2); // Используем UART2
+
+void setup() {
+  Serial.begin(115200);
+  
+  // Инициализация UART для кард-ридера (RX2=16, TX2=17)
+  CardReader.begin(9600, SERIAL_8N1, 16, 17);
+  
+  // Настройка пинов соленоидов
+  pinMode(SOLENOID_1_PIN, OUTPUT);
+  pinMode(SOLENOID_2_PIN, OUTPUT);
+  digitalWrite(SOLENOID_1_PIN, LOW);
+  digitalWrite(SOLENOID_2_PIN, LOW);
+  
+  // Настройка пина кнопок (без внутренней подтяжки)
+  pinMode(BUTTON_PIN, INPUT);
+}
+
+void loop() {
+  // Чтение состояния кнопки
+  int btnState = digitalRead(BUTTON_PIN);
+  
+  // Управление соленоидами по кнопке (пример логики)
+  if (btnState == HIGH) {
+    // Активация соленоида 1 (настройте под свою схему)
+    digitalWrite(SOLENOID_1_PIN, HIGH);
+    delay(100); // Импульс 100 мс
+    digitalWrite(SOLENOID_1_PIN, LOW);
+  } else {
+    // Активация соленоида 2
+    digitalWrite(SOLENOID_2_PIN, HIGH);
+    delay(100);
+    digitalWrite(SOLENOID_2_PIN, LOW);
+  }
+  
+  // Обработка данных с кард-ридера
+  if (CardReader.available()) {
+    String data = CardReader.readString();
+    Serial.print("Card UID: ");
+    Serial.println(data);
+  }
+  
+  delay(10); // Задержка для стабильности
+}
