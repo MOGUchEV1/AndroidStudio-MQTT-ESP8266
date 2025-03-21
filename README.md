@@ -46,4 +46,4 @@ ESP8266 получает команды и управляет светодиод
 
 Email: artemmoguchev@yandex.ru
 
-GitHub: MOGUch
+GitHub: MOGUchEV1
